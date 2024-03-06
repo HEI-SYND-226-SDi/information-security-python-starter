@@ -24,10 +24,9 @@ The starter code contains only support functions gathered into `Utility/Utility.
     
 `to_file(file, block_1, block_2)`:  concatenates the list of bytes `block_1` and `block_2` into the file `file`.
 
-`from_file(file, block_1_size)`:  returns two lists of bytes: the first has the size `block_1_size`, and the second has the remaining bytes in the file
+`from_file(file, block_1_size)`:  returns two lists of bytes: the first has the size `block_1_size`, and the second has the remaining bytes in the file.
   
- `to_file3(file, block_1, block_2, block_3)`:  concantenates the three list of bytes `block_1`, `block_2` and `block_3` in the file `file`.
+ `to_file3(file, block_1, block_2, block_3)`:  concatenates the three lists of bytes `block_1`, `block_2` and `block_3` in the file `file`.
   
 `from_file3(file, block_1_size, block_2_size)`:  returns three list of bytes. The first contains `block_1_size` bytes, the second `block_2_size` bytes, and the third the remaining bytes.
  
-
