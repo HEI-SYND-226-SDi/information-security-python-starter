@@ -38,11 +38,11 @@ def screw(block, errors=1):
 
 
 def screw_file(source, destination=None, errors=1):
-    source = open(source, 'rb')
-    source.seek(0, os.SEEK_END)
-    size = source.tell()
-    source.seek(0, 0)
-    data = bytearray(source.read())
+    source_file = open(source, 'rb')
+    source_file.seek(0, os.SEEK_END)
+    size = source_file.tell()
+    source_file.seek(0, 0)
+    data = bytearray(source_file.read())
 
     # inverted_bits is a list of errors random bit positions to invert
     inverted_bits = sample(range(0, size - 1, 1), errors)
@@ -55,14 +55,14 @@ def screw_file(source, destination=None, errors=1):
         # invert
         data[byte_pos] ^= (1 << in_byte_pos)
 
-    source.close()
+    source_file.close()
 
     if destination is None:
         destination = source
 
-    destination = open(destination, 'wb')
-    destination.write(data)
-    destination.close()
+    destination_file = open(destination, 'wb')
+    destination_file.write(data)
+    destination_file.close()
 
 
 def display_size(file_object):
@@ -80,3 +80,13 @@ def from_file(file, block_1_size):
     file_in = open(file, 'rb')
     block_1, block_2 = [file_in.read(x) for x in (block_1_size, -1)]
     return block_1, block_2
+
+def to_file3(file, block_1, block_2, block_3):
+    file_out = open(file, 'wb')
+    [file_out.write(x) for x in (block_1, block_2, block_3)]
+    file_out.close()
+
+def from_file3(file, block_1_size, block_2_size):
+    file_in = open(file, 'rb')
+    block_1, block_2, block_3 = [file_in.read(x) for x in (block_1_size, block_2_size, -1)]
+    return block_1, block_2, block_3
